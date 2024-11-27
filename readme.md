@@ -31,7 +31,7 @@ Ensure that the following are installed:
 1. **Clone the Repository:**
 
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/kunalarya873/zarity.git
    cd blood_tests_project
 
 2.  **Create and Activate Virtual Environment:**
