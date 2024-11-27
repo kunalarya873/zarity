@@ -188,11 +188,11 @@ License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
- ``### Instructions Summary:
+ ### Instructions Summary:
 
 - **Installation:** The README provides clear steps to install dependencies, set up a virtual environment, and migrate the database.
 - **API Documentation:** It includes details about the endpoints, request/response formats, and required parameters.
 - **Permissions and Troubleshooting:** It covers the role-based permissions (`IsDoctor`, `IsPatient`, etc.) and how to resolve common errors like migration issues or CORS problems.
 - **Development Guidelines:** Instructions for adding new features and running tests.
 
-You can create a `README.md` file with this content in your project's root directory to help others understand how to work with your API.`` 
+You can create a `README.md` file with this content in your project's root directory to help others understand how to work with your API.
