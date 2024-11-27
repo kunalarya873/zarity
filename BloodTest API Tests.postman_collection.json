@@ -1,0 +1,463 @@
+{
+	"info": {
+		"_postman_id": "c10213a9-c2ba-4828-bab6-c9e4aaf3131c",
+		"name": "BloodTest API Tests",
+		"description": "Collection of requests to test the BloodTest API endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32614538"
+	},
+	"item": [
+		{
+			"name": "Patient",
+			"item": [
+				{
+					"name": "Patient Creation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"patientuser\",\n  \"password\": \"password123\",\n  \"email\": \"patient@example.com\",\n  \"user_type\": \"patient\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/register/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patient Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"patientuser\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/token/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Blood Test Records for a Patient",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzEyNzUyLCJpYXQiOjE3MzI3MDU1NTIsImp0aSI6IjQ1ZDhmNmZjMzJjYTQ4YTNhZGY4NGE5ZWM5NDA1ZWUxIiwidXNlcl9pZCI6MX0.7vWYAy3hadWzYBhGQ6EkTd0RTztQ7ayvjfPT6ndCATY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/tests/list/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tests",
+								"list",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "access_token_via_refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczMzMwOTc2OCwiaWF0IjoxNzMyNzA0OTY4LCJqdGkiOiI0YzkxYzZjODhlYWI0NjdkOGM2ZWY5YjMzNGE4NGUxYiIsInVzZXJfaWQiOjF9.cDTnBeD6ZD0ebLWmZ6yXtmg7gtn41x_pr3NoYOXUVxg\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/token/refresh/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Doctor",
+			"item": [
+				{
+					"name": "access_token_via_refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczMzMxMDAxNiwiaWF0IjoxNzMyNzA1MjE2LCJqdGkiOiJhN2UyNGUxZDI0M2U0Y2RkOWU1ODg0ZGViMjk3MzIzMyIsInVzZXJfaWQiOjJ9.IptZ6_SIMZGGdJEBc2BZr7kyKb8LBFLrcwzWYhlY-Tk\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/token/refresh/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Blood Test Record",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzEyNjczLCJpYXQiOjE3MzI3MDU0NzMsImp0aSI6ImQyMzkxMjAwZDRlOTQzYWFiYzMyMTVlNmQzMmNiNTMzIiwidXNlcl9pZCI6Mn0.onee45c7y-9S-yiTEAt_Sl-8seAV0D4CcJWBfVqIL3Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{patient_access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"test_name\": \"Hemoglobin\",\n    \"value\": 13.5,\n    \"unit\": \"g/dL\",\n    \"test_date\": \"2024-11-27T10:00:00Z\",\n    \"is_abnormal\": false,\n    \"patient_id\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/tests/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tests",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Doctor Creation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"doctortuser\",\n  \"password\": \"password123\",\n  \"email\": \"doctor@example.com\",\n  \"user_type\": \"doctor\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/register/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Blood Test Statistics",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzEyODI0LCJpYXQiOjE3MzI3MDU2MjQsImp0aSI6ImEzYmZmODc2MWI1MzRiODFiYzlhNmVjNjZiMDAyYTMzIiwidXNlcl9pZCI6Mn0.QrmMyhSyesmF8dTAoOlq7ibFryc0xb8mHkjiXwijQJQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/tests/stats/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tests",
+								"stats",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Doctor Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzEyODA4LCJpYXQiOjE3MzI3MDU2MDgsImp0aSI6IjE4Y2JmNTNkZmU5YTQ5ODdiMWRkNzU3OTM4MThkZjk3IiwidXNlcl9pZCI6Mn0.BliC2VJLx2URfXZPZ-8-NoVzs0ytXMut8Wxa_Ps7Fd8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"doctortuser\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/token/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Blood(csv) Records",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzEyOTA0LCJpYXQiOjE3MzI3MDU3MDQsImp0aSI6ImNlYzc0OTQ5MWQwMDRmZThiYmRiOTkxZTMxMGI0MDhmIiwidXNlcl9pZCI6Mn0.2VJ___QMY-uoUjJ5tCVK3I5UTjPHj0DlyyRgpuqhXmo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/kunalarya/Downloads/Book 5(Sheet1) (1).csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/tests/upload/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tests",
+								"upload",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query_test start_date&abnormal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzEzNjIyLCJpYXQiOjE3MzI3MDY0MjIsImp0aSI6ImU0MjZkY2MyMGY4ZTRhMTY4MzFjYzVjNWU2YzU4YjI3IiwidXNlcl9pZCI6Mn0.3OvJQokT6lV_Rm3DqRfaeSEYNvnwjXimJ4UR9Lt6fGY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/tests/list/?patient_id=2&start_date=2024-11-01&end_date=2024-11-30&is_abnormal=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tests",
+								"list",
+								""
+							],
+							"query": [
+								{
+									"key": "patient_id",
+									"value": "2"
+								},
+								{
+									"key": "start_date",
+									"value": "2024-11-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-11-30"
+								},
+								{
+									"key": "is_abnormal",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query_test patien_id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzEzNjIyLCJpYXQiOjE3MzI3MDY0MjIsImp0aSI6ImU0MjZkY2MyMGY4ZTRhMTY4MzFjYzVjNWU2YzU4YjI3IiwidXNlcl9pZCI6Mn0.3OvJQokT6lV_Rm3DqRfaeSEYNvnwjXimJ4UR9Lt6fGY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/tests/list/?patient_id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tests",
+								"list",
+								""
+							],
+							"query": [
+								{
+									"key": "patient_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

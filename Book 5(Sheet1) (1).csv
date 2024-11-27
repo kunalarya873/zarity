@@ -1,0 +1,3 @@
+patient_id,test_name,value,unit,test_date,is_abnormal
+2,Complete Blood Count,112.4,g/dL,2024-11-27T10:00:00Z,TRUE
+3,Liver Function Test,22,UI/L,2024-11-07T10:00:00Z,FALSE
