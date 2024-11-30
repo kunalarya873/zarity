@@ -1,3 +1,151 @@
+# Zarity Assignment : BE (Intern)
+
+## **The Goal**
+
+To understand your technical, code hygiene & creative approach.
+
+## **Assignment**
+
+<aside>
+🟢
+
+Create a Django REST API that processes and analyses sample medical test results
+
+</aside>
+
+### 🎯 **Core task**
+
+Build an API that manages blood test results with these key features:
+
+1. **A single model to store blood test records with fields:**
+    1. patient_id (integer)
+    2. test_name (string)
+    3. value (decimal)
+    4. unit (string)
+    5. test_date (datetime)
+    6. is_abnormal (boolean)
+2. **Implement these specific API endpoints**:
+    1. POST /api/tests/ - Create a new test record
+    2. GET /api/tests/?patient_id=123 - Get all tests for a patient
+    3. GET /api/tests/stats/ - Get basic statistics (min, max, avg) for each test type
+3. **Implement ONE of these advanced features (candidate's choice):**
+    1. Batch upload of test results via CSV
+    2. Caching of statistics with Redis
+    3. Custom filtering with complex queries
+
+### ⚙️ **Technical Requirements**
+
+1. Use class-based views
+2. Implement proper serializer validation
+3. Write at least 3 unit tests
+4. Use appropriate status codes and error handling
+5. Document your API using function/class docstrings
+
+### ⭐ **Evaluation Points**
+
+1. Proper use of Django REST Framework features
+2. Serialiser implementation and validation
+3. Query optimisation
+4. Error handling
+5. Code organisation and style
+6. Test quality
+7. Documentation clarity
+
+### 💿 **Sample Model**
+
+```python
+```
+from django.db import models
+from django.core.validators import MinValueValidator
+
+class TestResult(models.Model):
+    patient_id = models.IntegerField(
+        validators=[MinValueValidator(1)]
+    )
+    test_name = models.CharField(
+        max_length=100,
+        choices=[
+            ('GLUCOSE', 'Blood Glucose'),
+            ('HB', 'Hemoglobin'),
+            ('CHOL', 'Cholesterol')
+        ]
+    )
+    value = models.DecimalField(
+        max_digits=8,
+        decimal_places=2
+    )
+    unit = models.CharField(max_length=10)
+    test_date = models.DateTimeField()
+    is_abnormal = models.BooleanField()
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['patient_id', 'test_name'])
+        ]
+```
+**Sample API Response**
+```
+{
+    "test_stats": {
+        "GLUCOSE": {
+            "min_value": 70.0,
+            "max_value": 180.0,
+            "avg_value": 98.5,
+            "total_tests": 150,
+            "abnormal_count": 15
+        }
+    }
+}
+```
+
+```
+
+### 💬 **Hints**
+
+- Use Django's aggregation functions for statistics
+- Consider using select_related() or prefetch_related() if you add related models
+- Remember to validate incoming data properly
+- Think about handling edge cases in your statistics endpoint
+
+## 🚀 **How to submit**
+
+- Step 1: GitHub Repository Setup
+    1. Create a new **private** repository on GitHub
+    2. Name it appropriately (e.g., "healthcare-api-assignment" or "django-test-analysis")
+    3. Make sure to include:
+        - README.md
+        - .gitignore (for Python/Django)
+        - All your project files
+- Step 2: Final Code Push
+    1. Ensure all your code is committed
+    2. Push your final changes to the main/master branch
+    3. Double-check that all files are properly uploaded
+- Step 3: Add Collaborator (Required for Access)
+    1. Go to your repository settings on GitHub
+    2. Navigate to "Collaborators and teams" section
+    3. Click "Add people" button
+    4. Add collaborator username: `rupesh-zarity`
+    5. Confirm the invitation
+        - This step is crucial as it's the only way we can access your private repository
+- Step 4: Submission
+    1. Fill the submission form below:
+    
+- Important Notes
+    - Your repository MUST be private
+    - Ensure collaborator access is granted before submitting the form
+    - Double-check that all code is pushed before sharing
+    - Verify that the GitHub repository link is correct
+    - Submit before the deadline
+
+### 💎 **Shortlisting**
+
+- Shortlisted candidates for the live case study round will hear back via Email & Internshala
+- Make sure you monitor your inbox/spam folder - within 3-5 working days of your submission.
+- Because of the volume of candidates, we will not be able to give a personal feedback to each candidate.
+    - Please be rest-assured, we go through each and every assignment in detail.
+
+
+
 # Blood Test Management API
 
 This is a Django-based REST API for managing blood test records. The API supports operations for registering users, managing blood test records, and viewing test statistics. The application also includes permissions for different user roles such as doctors and patients.
